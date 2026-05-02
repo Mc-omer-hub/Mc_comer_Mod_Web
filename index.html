@@ -34,7 +34,119 @@ body {
   min-height: 100vh;
 }
 
-/* ══════════════════════════════════════
+/* ═════════════════════════════════════
+   MOBILE WARNING MODAL — 移动端警告弹窗
+   ══════════════════════════════════════ */
+#mobile-warning-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  animation: fadeInOverlay 0.4s ease forwards;
+}
+
+@keyframes fadeInOverlay {
+  to { opacity: 1; }
+}
+
+#mobile-warning-box {
+  background: linear-gradient(135deg, rgba(108,92,231,0.15), rgba(0,206,201,0.1));
+  border: 1px solid rgba(108,92,231,0.3);
+  border-radius: 20px;
+  padding: 40px 32px;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  transform: scale(0.9) translateY(20px);
+  animation: slideUpBox 0.5s ease 0.1s forwards;
+}
+
+@keyframes slideUpBox {
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+#mobile-warning-box .warning-icon {
+  font-size: 56px;
+  margin-bottom: 20px;
+  display: block;
+  animation: pulse-icon 2s ease-in-out infinite;
+}
+
+@keyframes pulse-icon {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+#mobile-warning-box h2 {
+  font-size: 22px;
+  color: #fff;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+#mobile-warning-box p {
+  font-size: 15px;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+#mobile-warning-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#mobile-warning-buttons .btn-leave {
+  padding: 12px 32px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.05);
+  color: var(--text-dim);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+#mobile-warning-buttons .btn-leave:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border-color: rgba(255,255,255,0.3);
+}
+
+#mobile-warning-buttons .btn-continue {
+  padding: 12px 32px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(108,92,231,0.4);
+}
+
+#mobile-warning-buttons .btn-continue:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(108,92,231,0.6);
+}
+
+/* ═════════════════════════════════════
    MOUSE FOLLOWER — 鼠标跟随光晕
    ══════════════════════════════════════ */
 #cursor-glow {
@@ -666,6 +778,23 @@ footer a {
 <div id="cursor-glow"></div>
 <div id="cursor-glow-2"></div>
 
+<!-- ══ 移动端警告弹窗 ══ -->
+<div id="mobile-warning-overlay">
+  <div id="mobile-warning-box">
+    <span class="warning-icon">⚠️</span>
+    <h2>设备不兼容提醒</h2>
+    <p>本网页的内容仅适用于PC端，<br>不建议手机和平板等移动设备访问。<br><br>如需获得最佳体验，请使用电脑浏览器访问。</p>
+    <div id="mobile-warning-buttons">
+      <button class="btn-leave" onclick="handleLeave()">离开</button>
+      <button class="btn-continue" onclick="handleContinue()">继续访问</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 鼠标跟随光晕 ══ -->
+<div id="cursor-glow"></div>
+<div id="cursor-glow-2"></div>
+
 <!-- ══ 粒子画布 ══ -->
 <canvas id="particles"></canvas>
 
@@ -1102,11 +1231,94 @@ linkCards.forEach(card => {
   });
 });
 
+/* ══ 移动端警告弹窗逻辑 ══ */
+const isMobile = /Android|iPhone|iPad|iPod|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+const mobileOverlay = document.getElementById('mobile-warning-overlay');
+const mainContent = document.querySelector('nav')?.parentElement; // Gets the body or container
+
+function initMobileWarning() {
+  if (!isMobile) {
+    // 非移动端：直接隐藏弹窗，显示内容
+    if (mobileOverlay) mobileOverlay.style.display = 'none';
+    document.body.style.overflow = '';
+    return;
+  }
+
+  // 移动端：显示弹窗，隐藏页面内容
+  if (mobileOverlay) {
+    mobileOverlay.style.display = 'flex';
+  }
+  // 隐藏页面主要内容的初始显示（通过CSS或JS）
+  document.body.style.overflow = 'hidden';
+}
+
+// 离开按钮：关闭窗口或跳转
+function handleLeave() {
+  // 尝试关闭窗口（如果是由JS打开的）
+  if (window.history.length > 1) {
+    window.history.back();
+  } else {
+    // 跳转到百度首页或其他安全页面
+    window.location.href = 'https://www.baidu.com';
+  }
+}
+
+// 继续访问按钮：隐藏弹窗，显示内容
+function handleContinue() {
+  if (mobileOverlay) {
+    mobileOverlay.style.opacity = '0';
+    mobileOverlay.style.transition = 'opacity 0.4s ease';
+    setTimeout(() => {
+      mobileOverlay.style.display = 'none';
+    }, 400);
+  }
+  document.body.style.overflow = '';
+
+  // 移动端：隐藏下载和GitHub访问部分
+  if (isMobile) {
+    // 隐藏下载部分
+    const downloadSection = document.getElementById('download');
+    if (downloadSection) downloadSection.style.display = 'none';
+
+    // 隐藏GitHub链接（导航栏和HERRO区域的GitHub按钮）
+    const githubLinks = document.querySelectorAll('a[href*="github"]');
+    githubLinks.forEach(link => {
+      // 找到父元素并隐藏（可能是整个nav-item或button容器）
+      const parent = link.closest('li') || link.closest('.hero-actions') || link;
+      if (parent) parent.style.display = 'none';
+    });
+
+    // 隐藏导航栏的"下载"链接
+    const navDownloadLink = document.querySelector('a[href="#download"]');
+    if (navDownloadLink) {
+      const parentLi = navDownloadLink.closest('li');
+      if (parentLi) parentLi.style.display = 'none';
+    }
+  }
+
+  console.log('[Mobile] 用户选择继续访问，已禁用部分动画效果，并隐藏下载/GitHub部分');
+}
+
+// 页面加载后初始化
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMobileWarning);
+} else {
+  initMobileWarning();
+}
+
+/* ══ 设备检测：手机禁用重型动画 ══ */
+if (isMobile) {
+  // 隐藏粒子canvas和鼠标跟随效果
+  document.getElementById('particles')?.style.setProperty('display', 'none');
+  document.getElementById('cursor-glow')?.style.setProperty('display', 'none');
+  document.getElementById('cursor-glow-2')?.style.setProperty('display', 'none');
+}
+
 /* ══ 粒子网络背景（增强：鼠标排斥 + 连线高亮）══ */
 const cvs = document.getElementById('particles');
 const ctx = cvs.getContext('2d');
 let particles = [];
-const PARTICLE_COUNT = 90;
+const PARTICLE_COUNT = isMobile ? 0 : 90;  // 手机不创建粒子
 const CONNECT_DIST = 150;
 
 function resizeCanvas() {
