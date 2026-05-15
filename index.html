@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mc_comer Mod — 官方网站</title>
+<title>Mc_comer Mod-py — 官方网站</title>
 <link rel="icon" type="image/x-icon" href="icon.ico">
 <style>
 /* ══════════════════════════════════════
@@ -802,7 +802,7 @@ footer a {
 <nav>
   <a href="#" class="nav-logo">
     <img src="b.jpg" alt="logo">
-    <span>Mc_comer Mod</span>
+    <span>Mc_comer Mod-py</span>
   </a>
   <ul class="nav-links">
     <li><a href="#features">功能</a></li>
@@ -816,14 +816,15 @@ footer a {
 <section class="hero">
   <div class="hero-badge">
     <span class="dot"></span>
-    v6.2 最新版本已发布
+    v6.3 最新版本已发布
   </div>
   <h1>
-    Mc_comer<br><em>Mod</em>
+    Mc_comer<br><em>Mod-py</em>
   </h1>
   <p class="hero-sub">
-    Cheat Engine 7.6 辅助工具，帮助我的世界开发者快速建立测试环境。<br>
-    支持一键加载 Mod 文件、自动配置 CE，加密保护、自动更新，开箱即用。
+    底层采用纯 C 语言编写的高性能内存引擎，Python 前端轻量编排，性能提升 100 倍以上。<br>
+    摆脱了Cheat Engine的使用，根本上解决了CT文件的缓存问题，支持自定义热键绑定，开箱即用。
+    能帮助我的世界开发者快速建立测试环境。支持自动更新，开箱即用。
   </p>
   <div class="hero-actions">
     <a href="#download" class="btn btn-primary">
@@ -840,42 +841,42 @@ footer a {
 <section id="features">
   <div class="reveal">
     <div class="section-tag">功能特性</div>
-    <h2 class="section-title">为何选择<br>Mc_comer Mod？</h2>
+    <h2 class="section-title">为何选择<br>Mc_comer Mod-py？</h2>
     <p class="section-desc">
-      我们专注于安全性与用户体验，从加密资源到自动更新，每一个细节都精心设计。
+      我们专注于底层技术实现，从 C 语言原生引擎到混合架构设计，每一个细节都追求极致性能。
     </p>
   </div>
 
   <div class="features-grid">
     <div class="glass-card feature-card reveal">
       <div class="feature-icon">🔐</div>
-      <h3>资源加密保护</h3>
-      <p>所有核心资源（HTML、CSS、JS、数据文件）均采用高效加密，防止逆向与篡改，保障软件安全。</p>
+      <h3>C 原生引擎 100x+</h3>
+      <p>全部热路径（AOB 模式扫描、内存读写、指令流刷新）由 C DLL 原生执行，Python 仅做编排调度，性能比纯 Python 方案提升 100 倍以上。</p>
     </div>
     <div class="glass-card feature-card reveal">
       <div class="feature-icon">🔄</div>
+      <h3>全局热键系统</h3>
+      <p>基于 Windows GetAsyncKeyState 底层 API 实现的无窗口热键轮询，绑定信息自动持久化到桌面配置文件，支持所有功能模块的热键自定义。</p>
+    </div>
+    <div class="glass-card feature-card reveal">
+      <div class="feature-icon">🎨</div>
       <h3>智能更新检测</h3>
       <p>启动时自动连接服务器检查新版本，支持增量更新日志展示，让你第一时间体验最新功能。</p>
     </div>
     <div class="glass-card feature-card reveal">
-      <div class="feature-icon">🎨</div>
-      <h3>现代 UI 设计</h3>
-      <p>基于 pywebview + 原生 HTML/CSS/JS 构建，流畅动画、打字机效果、粒子背景，带来极致视觉体验。</p>
-    </div>
-    <div class="glass-card feature-card reveal">
       <div class="feature-icon">🔧</div>
-      <h3>内置工具集成</h3>
-      <p>集成 Cheat Engine 等实用工具，一键解压使用，无需额外下载配置，开箱即用。</p>
+      <h3>多架构支持</h3>
+      <p>支持 Hook 注入、NOP 替换、短跳转修改、单字节修改、按键模拟等多种底层修改技术，覆盖主流内存修改场景。</p>
     </div>
     <div class="glass-card feature-card reveal">
       <div class="feature-icon">🛡️</div>
-      <h3>登录验证系统（测试中..）</h3>
-      <p>支持密码登录与邮箱验证双模式。</p>
+      <h3>密码+QQ扫码双登录</h3>
+      <p>支持密码登录和 QQ 扫码登录两种方式，满足不同用户的使用习惯，保障访问安全。</p>
     </div>
     <div class="glass-card feature-card reveal">
       <div class="feature-icon">🚀</div>
-      <h3>Nuitka 高性能打包</h3>
-      <p>采用 Nuitka 编译为原生机器码，启动更快、运行更稳。</p>
+      <h3>Nuitka 原生编译</h3>
+      <p>采用 Nuitka 将整个 Python 项目编译为 x64 原生机器码，启动速度快，运行无 Python 环境依赖。</p>
     </div>
   </div>
 </section>
@@ -884,9 +885,9 @@ footer a {
 <section id="guide" class="guide-section">
   <div class="reveal">
     <div class="section-tag">使用指南</div>
-    <h2 class="section-title">快速上手<br>Mc_comer Mod</h2>
+    <h2 class="section-title">快速上手<br>Mc_comer Mod-py</h2>
     <p class="section-desc" style="margin:0 auto;">
-      Mc_comer Mod 是一款 Cheat Engine 7.6 辅助工具，帮助你快速加载 Mod 文件并自动配置 CE 环境。帮助我的世界开发者快速建立外挂环境，以便测试反作弊。
+      Mc_comer Mod-py 是一款采用 C 语言 + Python 混合架构的内存工具，底层引擎由纯 C 编写，前端由 Python + 原生 Web 技术驱动。适用于需要底层内存操作的各种调试和测试场景。
     </p>
   </div>
 
@@ -894,35 +895,35 @@ footer a {
     <div class="glass-card guide-card reveal">
       <div class="guide-step">1</div>
       <h3>下载与安装</h3>
-      <p>前往 <a href="https://github.com/Mc-omer-hub/Mc_comer_Mod-./releases/tag/Mod" target="_blank" style="color:var(--primary-glow);text-decoration:none;">GitHub Releases</a> 下载最新版本的 Mc_comer Mod 安装包，运行即可使用，无需额外配置。</p>
+      <p>前往 <a href="https://github.com/Mc-omer-hub/Mc_comer_Mod-./releases/tag/Mod" target="_blank" style="color:var(--primary-glow);text-decoration:none;">GitHub Releases</a> 下载最新安装包，解压后直接运行，无需安装任何额外环境。</p>
     </div>
     <div class="glass-card guide-card reveal">
       <div class="guide-step">2</div>
-      <h3>登录验证</h3>
+      <h3>登录方式</h3>
       <ul>
-        <li>运行程序后进入登录页面</li>
-        <li>在密码框输入访问密码</li>
-        <li>点击「登录」按钮进入主界面</li>
+        <li>启动程序后进入登录页，支持「密码登录」和「QQ 扫码登录」两种方式</li>
+        <li>密码登录：输入访问密码，回车或点击登录</li>
+        <li>QQ 登录：点击获取二维码，使用手机 QQ 扫码即可</li>
+        <li>验证通过后进入主界面</li>
       </ul>
     </div>
     <div class="glass-card guide-card reveal">
       <div class="guide-step">3</div>
-      <h3>打开 Mod</h3>
+      <h3>进程连接</h3>
       <ul>
-        <li>点击「打开Mod」按钮加载 CT 文件</li>
-        <li>程序自动查找并调用 Cheat Engine</li>
-        <li>成功启动后显示「已启动 CE」状态</li>
-        <li>需要先安装 CE 环境才能使用此功能</li>
+        <li>先启动目标 Windows 进程</li>
+        <li>在程序内点击「连接游戏」自动扫描连接</li>
+        <li>连接成功后自动开启自动模块</li>
+        <li>手动模块可在 UI 中自由开关</li>
       </ul>
     </div>
     <div class="glass-card guide-card reveal">
       <div class="guide-step">4</div>
-      <h3>安装 CE 环境</h3>
+      <h3>热键与更新</h3>
       <ul>
-        <li>点击「安装CE环境」按钮</li>
-        <li>自动将 Cheat Engine 7.6 解压到桌面</li>
-        <li>等待解压进度完成</li>
-        <li>安装成功后按钮变为「已安装」状态</li>
+        <li>每个手动模块可绑定全局热键，设置后自动持久化到桌面配置文件</li>
+        <li>启动时自动检查更新，弹窗展示更新日志</li>
+        <li>支持直接下载、QQ 群下载、官网下载三种获取方式</li>
       </ul>
     </div>
   </div>
@@ -934,7 +935,7 @@ footer a {
       <h3 style="font-size:18px;font-weight:700;color:#fff;">自动更新检查</h3>
     </div>
     <p style="font-size:14px;color:var(--text-dim);line-height:1.8;">
-      程序启动时会自动连接服务器检查新版本。如有更新，将弹出提示窗口 —— 你可以选择「开始更新」跳转到下载页面，或点击「不更新」停止更新行为。
+      程序启动时会自动连接服务器检查新版本。如有更新，将弹出更新窗口展示更新日志，并提供「直接下载」「QQ下载」「官网下载」三种更新方式。
     </p>
   </div>
 
@@ -947,11 +948,11 @@ footer a {
   <div class="faq-list">
     <div class="faq-item">
       <button class="faq-q">
-        提示"未找到 Cheat Engine.exe"怎么办？
+        QQ 扫码登录如何使用？
         <span class="faq-arrow">+</span>
       </button>
       <div class="faq-a">
-        <p>请先点击主界面的「安装CE环境」按钮安装 Cheat Engine。安装完成后即可正常使用「打开Mod」功能。</p>
+        <p>在登录页切换到「QQ 登录」选项卡，点击「获取二维码」，使用手机 QQ 扫码即可完成登录。无需输入密码，安全便捷。</p>
       </div>
     </div>
     <div class="faq-item">
@@ -965,11 +966,11 @@ footer a {
     </div>
     <div class="faq-item">
       <button class="faq-q">
-        安装 CE 环境后还是打不开 Mod？
+        C 语言引擎的优势？
         <span class="faq-arrow">+</span>
       </button>
       <div class="faq-a">
-        <p>请检查 CE 是否正确安装到桌面路径，或尝试点击「安装CE环境」重新安装一次。</p>
+        <p>AOB 模式扫描、内存批量读写等热路径全部由C DLL原生执行，且不再依赖CT文件。</p>
       </div>
     </div>
   </div>
@@ -983,7 +984,7 @@ footer a {
       <span class="sys-icon">💾</span> 桌面路径可写入
     </div>
     <div class="sys-tag">
-      <span class="sys-icon">⚡</span> Cheat Engine 7.6
+      <span class="sys-icon">⚡</span> Python 3.9+
     </div>
   </div>
 </section>
@@ -992,9 +993,9 @@ footer a {
 <section id="download" class="download-section">
   <div class="reveal">
     <div class="section-tag">立即下载</div>
-    <h2 class="section-title">获取 Mc_comer Mod</h2>
+    <h2 class="section-title">获取 Mc_comer Mod-py</h2>
     <p class="section-desc" style="margin:0 auto;">
-      免费下载最新版本，支持 Windows 64位系统，解压即用。
+      免费下载最新版本，支持 Windows 64 位系统，解压即用，无需 Python 运行环境。
     </p>
   </div>
 
@@ -1002,8 +1003,8 @@ footer a {
     <span class="dl-icon">📦</span>
     <h3>Mc_comer_Mod_Setup.exe</h3>
     <p>
-      最新版本 v6.2 · Windows 64位<br>
-      采用 Nuitka 编译 · 启动快速 · 运行稳定
+      最新版本 v6.3 · Windows 64位<br>
+      纯 C 底层引擎 + Python 混合架构 · Nuitka 原生编译
     </p>
     <div class="dl-buttons">
       <a href="https://github.com/Mc-omer-hub/Mc_comer_Mod-./releases/download/Mod/Mc_comer_Mod_Setup.exe"
@@ -1027,7 +1028,7 @@ footer a {
     <div class="section-tag">交流</div>
     <h2 class="section-title">加入我们</h2>
     <p class="section-desc">
-      获取帮助、报告问题、参与讨论 —— 我们随时欢迎你的加入。
+      获取帮助、报告问题、参与讨论 —— QQ 群和 GitHub 随时欢迎你的加入。
     </p>
   </div>
 
@@ -1041,7 +1042,7 @@ footer a {
       </div>
       <span class="arrow">→</span>
     </a>
-    <a href="https://qm.qq.com/q/9Yamgn5PPi" target="_blank"
+    <a href="https://qm.qq.com/q/cYPbkDAfvO" target="_blank"
        class="glass-card link-card reveal">
       <div class="link-icon">💬</div>
       <div>
@@ -1064,11 +1065,11 @@ footer a {
 
 <!-- ══ FOOTER ══ -->
 <footer>
-  <p>©2026 Mc_comer Mod &nbsp;·&nbsp; 官方网站</p>
+  <p>©2026 Mc_comer Mod-py &nbsp;·&nbsp; 官方网站</p>
   <p style="margin-top:8px;">
     <a href="https://github.com/Mc-omer-hub/Mc_comer_Mod-." target="_blank">GitHub</a>
     &nbsp;·&nbsp;
-    <a href="https://qm.qq.com/q/9Yamgn5PPi" target="_blank">QQ群</a>
+    <a href="https://qm.qq.com/q/cYPbkDAfvO" target="_blank">QQ群</a>
   </p>
 </footer>
 
