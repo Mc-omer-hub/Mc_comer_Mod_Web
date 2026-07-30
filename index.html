@@ -16,7 +16,7 @@
   --primary-glow: #a29bfe;
   --accent: #00cec9;
   --bg-dark: #0a0a1a;
-  --bg-card: rgba(255,255,255,0.04);
+  --bg-card: rgba(255,255,255,0.04)
   --glass: rgba(255,255,255,0.06);
   --glass-border: rgba(255,255,255,0.10);
   --text: #e2e2f0;
@@ -239,13 +239,13 @@ nav {
 }
 
 .nav-links a.nav-buy {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
+  background: linear-gradient(135deg, #ef4444, #dc2626);
   color: #fff;
   font-weight: 700;
-  box-shadow: 0 2px 12px rgba(245,158,11,0.3);
+  box-shadow: 0 2px 12px rgba(239,68,68,0.3);
 }
 .nav-links a.nav-buy:hover {
-  box-shadow: 0 4px 20px rgba(245,158,11,0.5);
+  box-shadow: 0 4px 20px rgba(239,68,68,0.5);
   transform: translateY(-1px);
 }
 
@@ -819,7 +819,7 @@ footer a {
     <li><a href="#about">关于</a></li>
     <li><a href="#download">下载</a></li>
     <li><a href="#links">交流</a></li>
-    <li><a href="buy.html" class="nav-buy">购买</a></li>
+    <li><a href="buy.html" class="nav-buy">赞助</a></li>
   </ul>
 </nav>
 
@@ -827,7 +827,7 @@ footer a {
 <section class="hero">
   <div class="hero-badge">
     <span class="dot"></span>
-    v7.0 最新版本已发布
+    v7.1 最新版本已发布
   </div>
   <h1>
     Erable<br><em>Mod</em>
@@ -845,6 +845,19 @@ footer a {
     </a>
   </div>
 
+</section>
+
+<!-- ══ 项目介绍 ══ -->
+<section>
+  <div class="reveal" style="text-align:center;max-width:780px;margin:0 auto;">
+    <div class="section-tag">项目介绍</div>
+    <h2 class="section-title">Erable-Mod 是什么？</h2>
+    <div class="glass-card def-card" style="padding:36px 40px;max-width:780px;margin:24px auto 0;">
+      <p style="font-size:15px;color:var(--text-dim);line-height:1.9;text-align:left;">
+        Erable-Mod 是一款免费反作弊测试工具,帮助我的世界开发者快速建立外挂环境,用于对反作弊系统的测试和漏洞排查。请注意，本工具仅支持单机及合规的非竞技性测试环境。未经许可用于多人正式环境属违规操作，由此产生的一切风险与责任将由用户自行承担。
+      </p>
+    </div>
+  </div>
 </section>
 
 <!-- ══ ABOUT 关于我们 ══ -->
@@ -894,46 +907,49 @@ footer a {
 <!-- ══ GUIDE 关于产品 ══ -->
 <section id="guide" class="guide-section">
   <div class="reveal">
-    <div class="section-tag">产品理念</div>
-    <h2 class="section-title">我们的承诺</h2>
+    <div class="section-tag">使用指南</div>
+    <h2 class="section-title">快速上手</h2>
     <p class="section-desc" style="margin:0 auto;">
-      坚持以用户为中心，不断打磨产品细节，追求卓越品质。
+      只需简单几步即可开始使用，如有疑问请加入交流群获取帮助。
     </p>
   </div>
 
   <div class="guide-grid">
     <div class="glass-card guide-card reveal">
       <div class="guide-step">1</div>
-      <h3>简单易用</h3>
-      <p>直观的界面设计，让您无需学习即可快速上手，享受流畅的操作体验。</p>
+      <h3>下载解压</h3>
+      <p>下载安装包后，将文件解压至任意目录（建议桌面），双击运行安装包开启安装</p>
     </div>
     <div class="glass-card guide-card reveal">
       <div class="guide-step">2</div>
-      <h3>高效体验</h3>
-      <p>从启动到使用，每一步都经过精心优化，确保您获得最佳的使用感受。</p>
+      <h3>启动工具</h3>
+      <p>运行桌面上的 <strong>Erable-Mod.exe</strong>，等待界面加载完成。</p>
     </div>
     <div class="glass-card guide-card reveal">
       <div class="guide-step">3</div>
-      <h3>品质保障</h3>
-      <p>严格的质量把控，持续的产品迭代，我们致力于提供经得起时间考验的产品。</p>
+      <h3>登录使用</h3>
+      <p>使用QQ注册账号登录后，选择需要启用的功能模块，启动 Minecraft 即可生效。</p>
     </div>
     <div class="glass-card guide-card reveal">
       <div class="guide-step">4</div>
-      <h3>用户至上</h3>
-      <p>认真倾听每一位用户的反馈，您的建议是我们前进的最大动力。</p>
+      <h3>关闭工具</h3>
+      <p>建议先退出游戏再关闭工具。如遇异常，可在任务管理器中结束 <strong>Erable-Mod.exe</strong> 进程。</p>
     </div>
   </div>
 
   <!-- 系统要求 -->
   <div class="sys-reqs reveal">
     <div class="sys-tag">
-      <span class="sys-icon">🖥</span> Windows 10 / Windows 11
+      <span class="sys-icon">🖥</span> Windows 10 / 11
+    </div>
+    <div class="sys-tag">
+      <span class="sys-icon">🎮</span> Minecraft 基岩版
     </div>
     <div class="sys-tag">
       <span class="sys-icon">💾</span> 桌面路径可写入
     </div>
     <div class="sys-tag">
-      <span class="sys-icon">⚡</span> Python 3.9+
+      <span class="sys-icon">⚡</span> 管理员权限
     </div>
   </div>
 </section>
@@ -952,7 +968,7 @@ footer a {
     <span class="dl-icon">📦</span>
     <h3>Erable_Mod_Setup.exe</h3>
     <p>
-      最新版本 v7.0 · Windows 64位<br>
+      最新版本 v7.1 · Windows 64位<br>
       轻量高效，解压即用
     </p>
     <div class="dl-buttons">
@@ -987,7 +1003,7 @@ footer a {
       <div class="link-icon">💻</div>
       <div>
         <h4>GitHub 仓库</h4>
-        <p>查看源码、提交 Issue、参与项目开发</p>
+        <p>查看详情，获取最新版本</p>
       </div>
       <span class="arrow">→</span>
     </a>
