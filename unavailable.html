@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erable-Mod — 服务不可用</title>
+<link rel="icon" type="image/x-icon" href="icon.ico">
+<style>
+/* ══════════════════════════════════════
+   CSS RESET & BASE（与主站一致）
+   ══════════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --primary: #6c5ce7;
+  --primary-glow: #a29bfe;
+  --accent: #00cec9;
+  --bg-dark: #0a0a1a;
+  --bg-card: rgba(255,255,255,0.04);
+  --glass: rgba(255,255,255,0.06);
+  --glass-border: rgba(255,255,255,0.10);
+  --text: #e2e2f0;
+  --text-dim: #8888aa;
+  --radius: 16px;
+  --danger: #ef4444;
+  --danger-light: #f87171;
+  --danger-dark: #dc2626;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ═══════════ 鼠标光晕 ═══════════ */
+#cursor-glow {
+  position: fixed;
+  width: 520px; height: 520px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle, rgba(239,68,68,0.10) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  will-change: left, top;
+}
+#cursor-glow-2 {
+  position: fixed;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle, rgba(108,92,231,0.06) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  will-change: left, top;
+}
+
+/* ═══════════ 导航栏 ═══════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 48px;
+  background: rgba(10,10,26,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-logo img {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.nav-links {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.nav-links a:hover {
+  color: #fff;
+  background: var(--glass);
+}
+
+.nav-links a.nav-back {
+  color: var(--text-dim);
+}
+
+.nav-links a.nav-back:hover {
+  color: var(--primary-glow);
+}
+
+/* ═══════════ 服务不可用卡片 ═══════════ */
+.page-content {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 24px 60px;
+}
+
+.maintenance-card {
+  max-width: 520px;
+  width: 100%;
+  padding: 56px 48px;
+  text-align: center;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.maintenance-card .maint-icon {
+  width: 88px; height: 88px;
+  margin: 0 auto 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44px;
+  font-weight: 800;
+  color: #fff;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--danger-light), var(--danger), var(--danger-dark));
+  box-shadow: 0 8px 30px rgba(239,68,68,0.35);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+.maintenance-card h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+}
+
+.maintenance-card .maint-sub {
+  font-size: 16px;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.maintenance-card .maint-desc {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.8;
+  margin-bottom: 36px;
+}
+
+.maintenance-card .maint-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.maintenance-card .maint-btn {
+  padding: 12px 36px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.maintenance-card .maint-btn.primary {
+  background: linear-gradient(135deg, var(--danger), var(--danger-dark));
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(239,68,68,0.3);
+}
+
+.maintenance-card .maint-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(239,68,68,0.4);
+}
+
+.maintenance-card .maint-btn.outline {
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  color: var(--text);
+}
+
+.maintenance-card .maint-btn.outline:hover {
+  border-color: var(--primary-glow);
+  color: var(--primary-glow);
+  transform: translateY(-2px);
+}
+
+/* ═══════════ 页脚 ═══════════ */
+footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 48px 24px;
+  border-top: 1px solid var(--glass-border);
+  color: var(--text-dim);
+  font-size: 13px;
+}
+
+footer a {
+  color: var(--primary-glow);
+  text-decoration: none;
+}
+
+/* ═══════════ 响应式 ═══════════ */
+@media (max-width: 768px) {
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .page-content { padding: 80px 16px 40px; }
+  .maintenance-card { padding: 40px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ 鼠标光晕 ══ -->
+<div id="cursor-glow"></div>
+<div id="cursor-glow-2"></div>
+
+<!-- ══ 导航栏 ══ -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="b.jpg" alt="logo">
+    <span>Erable-Mod</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-back">← 返回首页</a></li>
+  </ul>
+</nav>
+
+<!-- ══ 页面内容 ══ -->
+<div class="page-content">
+  <div class="maintenance-card">
+    <div class="maint-icon">!</div>
+    <h1>服务不可用</h1>
+    <div class="maint-sub">赞助服务暂时无法使用</div>
+    <div class="maint-desc">
+      当前服务正在维护升级中，<br>
+      请稍后刷新页面重试，或通过 QQ 群联系我们。<br>
+      给您带来的不便，敬请谅解。
+    </div>
+    <div class="maint-actions">
+      <a href="index.html" class="maint-btn primary">返回首页</a>
+      <a href="javascript:location.reload()" class="maint-btn outline">刷新重试</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 页脚 ══ -->
+<footer>
+  <p>©2026 Erable-Mod &nbsp;·&nbsp; 服务状态页</p>
+  <p style="margin-top:8px;">
+    <a href="index.html">返回首页</a>
+    &nbsp;·&nbsp;
+    <a href="https://qm.qq.com/q/4Kp9mm8JtC" target="_blank">QQ群</a>
+  </p>
+</footer>
+
+<!-- ═══ JAVASCRIPT ═══ -->
+<script>
+/* ══ 鼠标光晕跟随 ══ */
+const glow1 = document.getElementById('cursor-glow');
+const glow2 = document.getElementById('cursor-glow-2');
+let mx = 0, my = 0;
+let gx1 = 0, gy1 = 0, gx2 = 0, gy2 = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX;
+  my = e.clientY;
+});
+
+function animateGlow() {
+  gx1 += (mx - gx1) * 0.08;
+  gy1 += (my - gy1) * 0.08;
+  gx2 += (mx - gx2) * 0.04;
+  gy2 += (my - gy2) * 0.04;
+  glow1.style.left = gx1 + 'px';
+  glow1.style.top  = gy1 + 'px';
+  glow2.style.left = gx2 + 'px';
+  glow2.style.top  = gy2 + 'px';
+  requestAnimationFrame(animateGlow);
+}
+animateGlow();
+
+/* ══ 导航栏滚动效果 ══ */
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.style.background = window.scrollY > 60
+    ? 'rgba(10,10,26,0.95)'
+    : 'rgba(10,10,26,0.85)';
+}, { passive: true });
+</script>
+
+</body>
+</html>
